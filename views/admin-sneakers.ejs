@@ -12,7 +12,7 @@
   <!-- row -->
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <% if (drinks != '') { %> <% drinks.forEach(function(drink, index){ %>
+      <% if (sneakers != '') { %> <% sneakers.forEach(function(acsneakers, index){ %>
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
@@ -21,26 +21,26 @@
                 <img
                   class="img-fluid img-responsive rounded product-image"
                   id="product"
-                  src="<%= drink.image_url%>"
+                  src="<%= acsneakers.image_url%>"
                 />
               </div>
               <div class="col-md-6 border-left mt-1">
-                <h3><%= drink.name %></h3>
-                <div class="mt-1 mb-1 spec-1"><h5>Type: <%= drink.type %></h5></div>
+                <h3><%= acsneakers.name %></h3>
+                <div class="mt-1 mb-1 spec-1"><h5>Type: <%= acsneakers.type %></h5></div>
                 <p class="text-justify para mb-0 text-truncate">
-                  Description: <%= drink.description%>
+                  Description: <%= acsneakers.description%>
                 </p>
               </div>
               <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                 <div class="d-flex flex-row">
-                  <h4 class="mr-1"><%= drink.price %> VND</h4>
+                  <h4 class="mr-1"><%= acsneakers.price %> VND</h4>
                 </div>
                 <div class="d-flex flex-column mt-4">
-                  <a href="/admin-update-drink/<%= drink._id %>" class="btn btn-warning btn-sm"
+                  <a href="/admin-update-sneakers/<%= acsneakers._id %>" class="btn btn-warning btn-sm"
                     >Update</a
                   >
                   <form
-                    action="admin-delete-drink/<%= drink._id %>"
+                    action="admin-delete-sneakers/<%= acsneakers._id %>"
                     method="POST"
                     class="d-flex flex-column"
                   >
@@ -60,10 +60,10 @@
   </div>
   <div class="p-4 d-flex justify-content-center">
     <a
-      href="/admin-add-drink"
+      href="/admin-add-sneakers"
       type="submit"
       class="btn btn-primary text d-flex justify-content-center"
-      >Add a new drink</a
+      >Add new sneakers</a
     >
   </div>
 </div>

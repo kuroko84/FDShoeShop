@@ -8,7 +8,7 @@
     object-fit: contain;
   }
 </style>
-<% if(food != null ) { %>
+<% if(boots != null ) { %>
 
 <div class="content-body">
   <!-- row -->
@@ -29,7 +29,7 @@
             </div>
             <% } %>
             <form
-              action="/admin-update-food/<%= food._id %>"
+              action="/admin-update-boots/<%= boots._id %>"
               enctype="multipart/form-data"
               method="POST"
             >
@@ -41,7 +41,7 @@
                     name="name"
                     id="name"
                     class="form-control"
-                    value="<%= food.name %>"
+                    value="<%= boots.name %>"
                   />
                 </div>
 
@@ -52,7 +52,7 @@
                     name="price"
                     id="price"
                     class="form-control"
-                    value="<%= food.price%>"
+                    value="<%= boots.price%>"
                   />
                 </div>
 
@@ -65,7 +65,7 @@
                     cols="30"
                     rows="4"
                   >
-                    <%=food.description%></textarea
+                    <%=boots.description%></textarea
                   >
                 </div>
 
@@ -80,14 +80,14 @@
                   />
                 </div>
                 <div class="col-12">
-                  <img src="<%= food.image_url %>" style="height: 20vh" id="myimage" />
+                  <img src="<%= boots.image_url %>" style="height: 20vh" id="myimage" />
                 </div>
 
                 <div class="col-6 pt-4 d-flex justify-content-end">
                   <button type="submit" class="btn btn-primary">Update Product</button>
                 </div>
                 <div class="col-6 pt-4 d-flex">
-                  <a href="/admin-foods" type="submit" class="btn btn-primary">Cancel</a>
+                  <a href="/admin-boots" type="submit" class="btn btn-primary">Cancel</a>
                 </div>
               </div>
             </form>

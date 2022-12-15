@@ -17,7 +17,7 @@
           <div class="card-body">
             <div class="row rounded justify-content-center">
               <h1>
-                OUR <strong><span class="text-warning">DRINKS</span></strong>
+                OUR <strong><span class="text-warning">sneakers</span></strong>
               </h1>
             </div>
           </div>
@@ -36,9 +36,9 @@
     </div>
     <% } %>
     <div class="row justify-content-center">
-      <% if (drinks != '') { %> <% drinks.forEach(function(drink, index){ %>
+      <% if (sneakers != '') { %> <% sneakers.forEach(function(acsneakers, index){ %>
       <div class="col-md-6 category__link">
-        <a style="text-decoration: none" href="/client-product/<%= drink._id %>"
+        <a style="text-decoration: none" href="/client-product/<%= acsneakers._id %>"
           ><div class="card mt-4">
             <div class="card-body">
               <div class="row rounded">
@@ -46,26 +46,26 @@
                   <img
                     class="img-fluid img-responsive rounded product-image"
                     id="product"
-                    src="<%= drink.image_url%>"
+                    src="<%= acsneakers.image_url%>"
                   />
                 </div>
                 <div class="col-6 border-left mt-1">
-                  <h2><%= drink.name %></h2>
-                  <div class="mt-1 mb-1 spec-1"><h3>Type: <%= drink.type %></h3></div>
+                  <h2><%= acsneakers.name %></h2>
+                  <div class="mt-1 mb-1 spec-1"><h3>Type: <%= acsneakers.type %></h3></div>
                   <p class="text-justify h3 para mb-0 text-truncate">
-                    Description: <%= drink.description%>
+                    Description: <%= acsneakers.description%>
                   </p>
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                   <div class="d-flex flex-row">
-                    <h2 class="mr-1"><%= drink.price %> VND</h2>
+                    <h2 class="mr-1"><%= acsneakers.price %> VND</h2>
                   </div>
                   <div class="d-flex flex-column mt-4">
-                    <!-- <a href="/admin-update-drink/<%= drink._id %>" class="btn btn-warning btn-sm"
+                    <!-- <a href="/admin-update-acsneakers/<%= acsneakers._id %>" class="btn btn-warning btn-sm"
                       >Update</a
                     > -->
                     <form
-                      action="/add-cart/<%= drink._id %>"
+                      action="/add-cart/<%= acsneakers._id %>"
                       method="POST"
                       class="d-flex flex-column"
                     >

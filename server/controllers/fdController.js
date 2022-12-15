@@ -17,14 +17,15 @@ const Transport = require('../models/Transport');
 exports.homepage = async (req, res) => {
   try {
     const limitNumber = 4;
-    const foods = await Product.find({ type: 'food' })
+    const sneakers = await Product.find({ type: 'sneakers' })
       .sort({ _id: -1 })
       .limit(limitNumber);
-    const drinks = await Product.find({ type: 'drink' })
+    const boots = await Product.find({ type: 'boots' })
       .sort({ _id: -1 })
       .limit(limitNumber);
+
     // const users = await User.find({});
-    res.render('index', { title: 'F&D - Homepage', foods, drinks });
+    res.render('index', { title: 'F&D - Homepage',sneakers , boots });
   } catch (error) {
     res.status(500).send({ message: error.message || 'Error Occured' });
   }
@@ -236,18 +237,18 @@ async function insertDymmyClientData() {
 exports.client = async (req, res) => {
   try {
     const limitNumber = 4;
-    const foods = await Product.find({ type: 'food' })
+    const sneakers = await Product.find({ type: 'sneakers' })
       .sort({ _id: -1 })
       .limit(limitNumber);
-    const drinks = await Product.find({ type: 'drink' })
+    const boots = await Product.find({ type: 'boots' })
       .sort({ _id: -1 })
       .limit(limitNumber);
     // const users = await User.find({});
     res.render('client-index', {
       layout: './layouts/client',
       title: 'F&D - Clients',
-      foods,
-      drinks,
+      sneakers,
+      boots,
     });
   } catch (error) {
     res.status(500).send({ message: error.message || 'Error Occured' });
@@ -318,18 +319,18 @@ exports.clientProduct = async (req, res) => {
 };
 
 /**
- * GET /foods
- * get client with foods
+ * GET /sneakers
+ * get client with sneakers
  */
-exports.clientFoods = async (req, res, next) => {
+exports.clientSneakers = async (req, res, next) => {
   try {
     const infoErrorsObj = req.flash('infoErrors');
     const infoObj = req.flash('infoSubmit');
-    const foods = await Product.find({ type: 'food' }).sort({ _id: -1 });
-    res.render('client-foods', {
-      title: 'F&D - Client foods',
+    const sneakers = await Product.find({ type: 'sneakers' }).sort({ _id: -1 });
+    res.render('client-sneakers', {
+      title: 'F&D - Client Sneakers',
       layout: './layouts/client',
-      foods,
+      sneakers,
       infoErrorsObj,
       infoObj,
     });
@@ -338,18 +339,18 @@ exports.clientFoods = async (req, res, next) => {
   }
 };
 /**
- * GET /drinks
- * get client with foods
+ * GET /boots
+ * get client with sneakers
  */
-exports.clientDrinks = async (req, res, next) => {
+exports.clientBoots = async (req, res, next) => {
   try {
     const infoErrorsObj = req.flash('infoErrors');
     const infoObj = req.flash('infoSubmit');
-    const drinks = await Product.find({ type: 'drink' }).sort({ _id: -1 });
-    res.render('client-drinks', {
-      title: 'F&D - Client drinks',
+    const boots = await Product.find({ type: 'boots' }).sort({ _id: -1 });
+    res.render('client-boots', {
+      title: 'F&D - Client Boots',
       layout: './layouts/client',
-      drinks,
+      boots,
       infoErrorsObj,
       infoObj,
     });
@@ -357,6 +358,7 @@ exports.clientDrinks = async (req, res, next) => {
     res.status(500).send({ message: error.message || 'Error Occured' });
   }
 };
+
 
 /**
  * GET /cart
@@ -461,10 +463,10 @@ exports.addCartOnPost = async (req, res) => {
       }
     }
     req.flash('infoSubmit', 'cart has been updated.');
-    if (product.type == 'food') {
-      res.redirect('/foods');
+    if (product.type == 'sneakers') {
+      res.redirect('/sneakers');
     } else {
-      res.redirect('/drinks');
+      res.redirect('/boots');
     }
   } catch (error) {
     console.log(error);
@@ -915,32 +917,32 @@ exports.adminDashboard = async (req, res, next) => {
   }
 };
 /**
- * GET /admin-drinks
- * admin drinks
+ * GET /admin-sneakers
+ * admin sneakers
  */
-exports.adminDrinks = async (req, res, next) => {
+exports.adminSneakers = async (req, res, next) => {
   try {
-    const drinks = await Product.find({ type: 'drink' });
-    res.render('admin-drinks', {
+    const sneakers = await Product.find({ type: 'sneakers' });
+    res.render('admin-sneakers', {
       layout: './layouts/admin',
       title: 'F&D - Admin dashboard',
-      drinks,
+      sneakers,
     });
   } catch (error) {
     res.status(500).send({ message: error.message || 'Error Occured' });
   }
 };
 /**
- * GET /admin-foods
- * admin foods
+ * GET /admin-boots
+ * admin boots
  */
-exports.adminFoods = async (req, res, next) => {
+exports.adminBoots = async (req, res, next) => {
   try {
-    const foods = await Product.find({ type: 'food' });
-    res.render('admin-foods', {
+    const boots = await Product.find({ type: 'boots' });
+    res.render('admin-boots', {
       layout: './layouts/admin',
       title: 'F&D - Admin dashboard',
-      foods,
+      boots,
     });
   } catch (error) {
     res.status(500).send({ message: error.message || 'Error Occured' });
@@ -962,15 +964,15 @@ exports.adminInfo = async (req, res, next) => {
   }
 };
 /**
- * GET /admin-add-food
- * admin add food
+ * GET /admin-add-sneakers
+ * admin add sneakers
  */
-exports.adminAddFood = async (req, res, next) => {
+exports.adminAddSneakers = async (req, res, next) => {
   try {
     const infoErrorsObj = req.flash('infoErrors');
     const infoObj = req.flash('infoSubmit');
 
-    res.render('admin-add-food', {
+    res.render('admin-add-sneakers', {
       layout: './layouts/admin',
       title: 'F&D - Admin dashboard',
       infoErrorsObj,
@@ -982,15 +984,15 @@ exports.adminAddFood = async (req, res, next) => {
 };
 
 /**
- * GET /admin-add-drink
- * admin add drink
+ * GET /admin-add-boots
+ * admin add boots
  */
-exports.adminAddDrink = async (req, res, next) => {
+exports.adminAddBoots = async (req, res, next) => {
   try {
     const infoErrorsObj = req.flash('infoErrors');
     const infoObj = req.flash('infoSubmit');
 
-    res.render('admin-add-drink', {
+    res.render('admin-add-boots', {
       layout: './layouts/admin',
       title: 'F&D - Admin dashboard',
       infoErrorsObj,
@@ -1002,71 +1004,70 @@ exports.adminAddDrink = async (req, res, next) => {
 };
 
 /**
- * POST/admin-add-food
- * admin add food on post
+ * POST/admin-add-sneakers
+ * admin add sneakers on post
  */
-exports.adminAddFoodOnPost = async (req, res) => {
+exports.adminAddSneakersOnPost = async (req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
     const newProduct = new Product({
       name: req.body.name,
       price: req.body.price,
       description: req.body.description,
-      type: 'food',
+      type: 'sneakers',
       image_url: result.secure_url,
       cloudinary_id: result.public_id,
     });
-    // Save food
+    // Save sneakers
     await newProduct.save();
     req.flash('infoSubmit', 'Product has been add.');
-    res.redirect('/admin-add-food');
+    res.redirect('/admin-add-sneakers');
   } catch (error) {
-    req.flash('infoErrors', 'Fail to add');
-    res.redirect('/admin-add-food');
+    req.flash('infoErrors', 'Failed to add');
+    res.redirect('/admin-add-sneakers');
   }
 };
 
 /**
- * POST/admin-add-drink
- * admin add drink on post
+ * POST/admin-add-boots
+ * admin add boots on post
  */
-exports.adminAddDrinkOnPost = async (req, res) => {
+exports.adminAddBootsOnPost = async (req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
     const newProduct = new Product({
       name: req.body.name,
       price: req.body.price,
       description: req.body.description,
-      type: 'drink',
+      type: 'boots',
       image_url: result.secure_url,
       cloudinary_id: result.public_id,
     });
-    // Save drink
     await newProduct.save();
     req.flash('infoSubmit', 'Product has been add.');
-    res.redirect('/admin-add-drink');
+    res.redirect('/admin-add-boots');
   } catch (error) {
     req.flash('infoErrors', 'Fail to add');
-    res.redirect('/admin-add-drink');
+    res.redirect('/admin-add-boots');
   }
 };
 
 /**
- * GET/update-food
- * Update food
+ * GET/update-sneakers
+ * Update sneakers
  */
-exports.adminUpdateFood = async (req, res) => {
+exports.adminUpdateSneakers = async (req, res) => {
   try {
     const infoErrorsObj = req.flash('infoErrors');
     const infoObj = req.flash('infoSubmit');
-    const foodID = req.params.id;
-    const food = await Product.findById(foodID);
-    res.render('admin-update-food', {
+    const sneakersID = req.params.id;
+    const sneakers = await Product.findById(sneakersID);
+    res.render('admin-update-sneakers', {
       layout: './layouts/admin',
       title: 'F&D - Admin dashboard',
       infoErrorsObj,
       infoObj,
-      food,
+      sneakers,
     });
   } catch (error) {
     console.log('wrong view?');
@@ -1075,21 +1076,21 @@ exports.adminUpdateFood = async (req, res) => {
 };
 
 /**
- * GET/update-drink
- * Update drink
+ * GET/update-boots
+ * Update boots
  */
-exports.adminUpdateDrink = async (req, res) => {
+exports.adminUpdateBoots = async (req, res) => {
   try {
     const infoErrorsObj = req.flash('infoErrors');
     const infoObj = req.flash('infoSubmit');
-    const drinkID = req.params.id;
-    const drink = await Product.findById(drinkID);
-    res.render('admin-update-drink', {
+    const bootsID = req.params.id;
+    const boots = await Product.findById(bootsID);
+    res.render('admin-update-boots', {
       layout: './layouts/admin',
       title: 'F&D - Admin dashboard',
       infoErrorsObj,
       infoObj,
-      drink,
+      boots,
     });
   } catch (error) {
     console.log('wrong view?');
@@ -1098,16 +1099,16 @@ exports.adminUpdateDrink = async (req, res) => {
 };
 
 /**
- * POST/update-food
- * Update food on post
+ * POST/update-sneakers
+ * Update sneakers on post
  */
-exports.adminUpdateFoodOnPost = async (req, res) => {
-  const url = '/admin-update-food/' + req.params.id;
+exports.adminUpdateSneakersOnPost = async (req, res) => {
+  const url = '/admin-update-sneakers/' + req.params.id;
   try {
-    const foodID = req.params.id;
-    const query = { _id: foodID };
-    const food = await Product.findById(query);
-    await cloudinary.uploader.destroy(food.cloudinary_id);
+    const sneakersID = req.params.id;
+    const query = { _id: sneakersID };
+    const sneakers = await Product.findById(query);
+    await cloudinary.uploader.destroy(sneakers.cloudinary_id);
     console.log('destroy img sucess');
     const result = await cloudinary.uploader.upload(req.file.path);
     console.log('upload new img sucess');
@@ -1128,16 +1129,16 @@ exports.adminUpdateFoodOnPost = async (req, res) => {
 };
 
 /**
- * POST/update-drink
- * Update drink on post
+ * POST/update-boots
+ * Update boots on post
  */
-exports.adminUpdateDrinkOnPost = async (req, res) => {
-  const url = '/admin-update-drink/' + req.params.id;
+exports.adminUpdateBootsOnPost = async (req, res) => {
+  const url = '/admin-update-boots/' + req.params.id;
   try {
-    const drinkID = req.params.id;
-    const query = { _id: drinkID };
-    const drink = await Product.findById(query);
-    await cloudinary.uploader.destroy(drink.cloudinary_id);
+    const bootsID = req.params.id;
+    const query = { _id: bootsID };
+    const boots = await Product.findById(query);
+    await cloudinary.uploader.destroy(boots.cloudinary_id);
     console.log('destroy img sucess');
     const result = await cloudinary.uploader.upload(req.file.path);
     console.log('upload new img sucess');
@@ -1158,48 +1159,49 @@ exports.adminUpdateDrinkOnPost = async (req, res) => {
 };
 
 /**
- * POST/delete-food
- * Delete food on post
+ * POST/delete-sneakers
+ * Delete sneakers on post
  */
-exports.adminDeleteFoodOnPost = async (req, res) => {
-  const url = '/admin-foods';
+exports.adminDeleteSneakersOnPost = async (req, res) => {
+  const url = '/admin-sneakers';
 
   try {
     query = { _id: req.params.id };
-    const food = await Product.findOne(query);
-    await cloudinary.uploader.destroy(food.cloudinary_id);
+    const sneakers = await Product.findOne(query);
+    await cloudinary.uploader.destroy(sneakers.cloudinary_id);
     console.log('destroy img sucess');
     await Product.findOneAndDelete(query);
     req.flash('infoDelete', 'Product has been deleted.');
     res.redirect(url);
   } catch (error) {
     console.log(error);
-    req.flash('infoDeleteErrors', 'Fail to delete food');
+    req.flash('infoDeleteErrors', 'Fail to delete sneakers');
     res.redirect(url);
   }
 };
 
 /**
- * POST/delete-drink
- * Delete drink on post
+ * POST/delete-boots
+ * Delete boots on post
  */
-exports.adminDeleteDrinkOnPost = async (req, res) => {
-  const url = '/admin-drinks';
+exports.adminDeleteBootsOnPost = async (req, res) => {
+  const url = '/admin-boots';
 
   try {
     query = { _id: req.params.id };
-    const drink = await Product.findOne(query);
-    await cloudinary.uploader.destroy(drink.cloudinary_id);
+    const boots = await Product.findOne(query);
+    await cloudinary.uploader.destroy(boots.cloudinary_id);
     console.log('destroy img sucess');
     await Product.findOneAndDelete(query);
     req.flash('infoDelete', 'Product has been deleted.');
     res.redirect(url);
   } catch (error) {
     console.log(error);
-    req.flash('infoDeleteErrors', 'Fail to delete drink');
+    req.flash('infoDeleteErrors', 'Fail to delete boots');
     res.redirect(url);
   }
 };
+
 
 /**
  * GET/admin-show-staff-list

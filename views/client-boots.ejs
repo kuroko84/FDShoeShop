@@ -17,7 +17,7 @@
           <div class="card-body">
             <div class="row rounded justify-content-center">
               <h1>
-                OUR <strong><span class="text-warning">FOODS</span></strong>
+                OUR <strong><span class="text-warning">boots</span></strong>
               </h1>
             </div>
           </div>
@@ -36,10 +36,9 @@
     </div>
     <% } %>
     <div class="row justify-content-center">
-      <% if (foods != '') { %> <% foods.forEach(function(food, index){ %>
-
+      <% if (boots != '') { %> <% boots.forEach(function(acboots, index){ %>
       <div class="col-md-6 category__link">
-        <a style="text-decoration: none" href="/client-product/<%= food._id %>"
+        <a style="text-decoration: none" href="/client-product/<%= acboots._id %>"
           ><div class="card mt-4">
             <div class="card-body">
               <div class="row rounded">
@@ -47,26 +46,26 @@
                   <img
                     class="img-fluid img-responsive rounded product-image"
                     id="product"
-                    src="<%= food.image_url%>"
+                    src="<%= acboots.image_url%>"
                   />
                 </div>
                 <div class="col-6 border-left mt-1">
-                  <h2><%= food.name %></h2>
-                  <div class="mt-1 mb-1 spec-1"><h3>Type: <%= food.type %></h3></div>
+                  <h2><%= acboots.name %></h2>
+                  <div class="mt-1 mb-1 spec-1"><h3>Type: <%= acboots.type %></h3></div>
                   <p class="text-justify h3 para mb-0 text-truncate">
-                    Description: <%= food.description%>
+                    Description: <%= acboots.description%>
                   </p>
                 </div>
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                   <div class="d-flex flex-row">
-                    <h2 class="mr-1"><%= food.price %> VND</h2>
+                    <h2 class="mr-1"><%= acboots.price %> VND</h2>
                   </div>
                   <div class="d-flex flex-column mt-4">
-                    <!-- <a href="/admin-update-food/<%= food._id %>" class="btn btn-warning btn-sm"
+                    <!-- <a href="/admin-update-acboots/<%= acboots._id %>" class="btn btn-warning btn-sm"
                       >Update</a
                     > -->
                     <form
-                      action="/add-cart/<%= food._id %>"
+                      action="/add-cart/<%= acboots._id %>"
                       method="POST"
                       class="d-flex flex-column"
                     >
@@ -85,12 +84,14 @@
       <% }) %> <% } else { %>
       <h4>No item found</h4>
       <% } %>
-      <div class="col-2">
+    </div>
+    <div class="row d-flex justify-content-center pt-5 pb-5">
+      <div class="col-md-2">
         <a href="/client" type="submit" class="btn btn-primary text d-flex justify-content-center"
           ><h3>Go to homepage</h3></a
         >
       </div>
-      <div class="col-2">
+      <div class="col-md-2">
         <a href="/cart" type="submit" class="btn btn-primary text d-flex justify-content-center"
           ><h3>Go to cart</h3></a
         >

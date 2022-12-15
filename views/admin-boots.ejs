@@ -12,7 +12,7 @@
   <!-- row -->
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <% if (foods != '') { %> <% foods.forEach(function(food, index){ %>
+      <% if (boots != '') { %> <% boots.forEach(function(acboots, index){ %>
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
@@ -21,26 +21,26 @@
                 <img
                   class="img-fluid img-responsive rounded product-image"
                   id="product"
-                  src="<%= food.image_url%>"
+                  src="<%= acboots.image_url%>"
                 />
               </div>
               <div class="col-md-6 border-left mt-1">
-                <h3><%= food.name %></h3>
-                <div class="mt-1 mb-1 spec-1"><h5>Type: <%= food.type %></h5></div>
+                <h3><%= acboots.name %></h3>
+                <div class="mt-1 mb-1 spec-1"><h5>Type: <%= acboots.type %></h5></div>
                 <p class="text-justify para mb-0 text-truncate">
-                  Description: <%= food.description%>
+                  Description: <%= acboots.description%>
                 </p>
               </div>
               <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                 <div class="d-flex flex-row">
-                  <h4 class="mr-1"><%= food.price %> VND</h4>
+                  <h4 class="mr-1"><%= acboots.price %> VND</h4>
                 </div>
                 <div class="d-flex flex-column mt-4">
-                  <a href="/admin-update-food/<%= food._id %>" class="btn btn-warning btn-sm"
+                  <a href="/admin-update-boots/<%= acboots._id %>" class="btn btn-warning btn-sm"
                     >Update</a
                   >
                   <form
-                    action="admin-delete-food/<%= food._id %>"
+                    action="admin-delete-boots/<%= acboots._id %>"
                     method="POST"
                     class="d-flex flex-column"
                   >
@@ -60,13 +60,54 @@
   </div>
   <div class="p-4 d-flex justify-content-center">
     <a
-      href="/admin-add-food"
+      href="/admin-add-boots"
       type="submit"
       class="btn btn-primary text d-flex justify-content-center"
-      >Add a new food</a
+      >Add new boots</a
     >
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+    var showChar = 100;
+    var ellipsestext = '...';
+    var moretext = 'more';
+    var lesstext = 'less';
+    $('.more').each(function () {
+      var content = $(this).html();
+
+      if (content.length > showChar) {
+        var c = content.substr(0, showChar);
+        var h = content.substr(showChar - 1, content.length - showChar);
+
+        var html =
+          c +
+          '<span class="moreellipses">' +
+          ellipsestext +
+          '&nbsp;</span><span class="morecontent"><span>' +
+          h +
+          '</span>&nbsp;&nbsp;<a href="" class="morelink">' +
+          moretext +
+          '</a></span>';
+
+        $(this).html(html);
+      }
+    });
+
+    $('.morelink').click(function () {
+      if ($(this).hasClass('less')) {
+        $(this).removeClass('less');
+        $(this).html(moretext);
+      } else {
+        $(this).addClass('less');
+        $(this).html(lesstext);
+      }
+      $(this).parent().prev().toggle();
+      $(this).prev().toggle();
+      return false;
+    });
+  });
+</script>
 <!-- #/ container -->
 <!--**********************************
                 Content body end

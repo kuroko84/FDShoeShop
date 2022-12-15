@@ -3,12 +3,12 @@
   <section class="home" id="home">
     <div class="image" data-aos="fade-down">
       <img
-        src="https://cdn.vox-cdn.com/thumbor/8hZcUxUOBb4GV1JiDsz1USpT29w=/385x352:1561x1061/1200x800/filters:focal(831x620:1137x926)/cdn.vox-cdn.com/uploads/chorus_image/image/70609268/Burger_King_Plant_based_Double_Cheeezeburger.0.jpg"
+        src="https://th.bing.com/th/id/OIP.pc7ULvMFld0nEOJ2yUTE-gHaEu?pid=ImgDet&rs=1"
         alt=""
       />
     </div>
     <div class="content" data-aos="fade-up">
-      <h3>Most Tasty Burger For You</h3>
+      <h3>Most Awesome Sneaker For You</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis explicabo eius inventore
         reprehenderit alias eos facilis, ipsa est asperiores repellendus!
@@ -20,24 +20,28 @@
   </section>
   <!-- home section ends -->
   <hr />
-  <!-- foods section starts  -->
-  <section class="packages" id="foods">
-    <a href="/foods" title="Click fore more foods"
-      ><h1 class="heading">Our <span>Foods</span></h1></a
+  <!-- sneakers section starts  -->
+  <section class="packages" id="sneakers">
+    <a href="/sneakers" title="Click fore more sneakers"
+      ><h1 class="heading">Our <span>sneakers</span></h1></a
     >
     <div class="box-container">
       <div class="row">
-        <% if ( foods != '') { %> <% foods.forEach(function(food, index){ %>
-        <a href="/product/<%= food._id %>">
+        <% if ( sneakers != '') { %> <% sneakers.forEach(function(acsneakers, index){ %>
+        <a href="/product/<%= acsneakers._id %>">
           <div class="col-md-3 category__link">
             <div class="box" data-aos="fade-up">
               <div class="image">
-                <img src=" <%= food.image_url %> " alt="<%= food.name %>" />
-                <h3><i class="fas fa-utensils"></i><%= food.name %></h3>
+                <img src=" <%= acsneakers.image_url %> " alt="<%= acsneakers.name %>" />
+                <h3><i class="fa-solid fa-shoe-prints"></i><%= acsneakers.name %></h3>
               </div>
               <div class="content">
-                <div class="price"><%= food.price %></div>
-                <p><%= food.description %></p>
+                <div class="price"><%= acsneakers.price %></div>
+                <p style=" display: -webkit-box;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1"><%= acsneakers.description %></p>
                 <a href="/must-login" class="btn btn-block btn-warning btn-lg text-white"
                   ><h4>Order now</h4></a
                 >
@@ -49,26 +53,30 @@
       </div>
     </div>
   </section>
-  <!-- foods section ends -->
+  <!-- sneakers section ends -->
   <hr />
-  <!-- drinks section starts  -->
-  <section class="packages" id="drinks">
-    <a href="/drinks" title="Click fore more drinks"
-      ><h1 class="heading">Our <span>Drinks</span></h1></a
+  <!-- boots section starts  -->
+  <section class="packages" id="boots">
+    <a href="/boots" title="Click fore more boots"
+      ><h1 class="heading">Our <span>boots</span></h1></a
     >
     <div class="box-container">
       <div class="row">
-        <% if ( drinks != '') { %> <% drinks.forEach(function(drink, index){ %>
-        <a href="/product/<%= drink._id %>"
+        <% if ( boots != '') { %> <% boots.forEach(function(acboots, index){ %>
+        <a href="/product/<%= acboots._id %>"
           ><div class="col-md-3 category__link">
             <div class="box" data-aos="fade-up">
               <div class="image">
-                <img src=" <%= drink.image_url %> " alt="<%= drink.name %> " />
-                <h3><i class="fas fa-utensils"></i><%= drink.name %></h3>
+                <img src=" <%= acboots.image_url %> " alt="<%= acboots.name %> " />
+                <h3><i class="fa-solid fa-shoe-prints"></i><%= acboots.name %></h3>
               </div>
               <div class="content">
-                <div class="price"><%= drink.price %></div>
-                <p><%= drink.description %></p>
+                <div class="price"><%= acboots.price %></div>
+                <p style=" display: -webkit-box;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1"><%= acboots.description %></p>
                 <a href="#" class="btn btn-block btn-warning btn-lg text-white"
                   ><h4>Order now</h4></a
                 >
@@ -80,6 +88,6 @@
       </div>
     </div>
   </section>
-  <!-- drinks section ends -->
+  <!-- boots section ends -->
   <!-- page-body-wrapper ends -->
 </div>

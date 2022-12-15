@@ -47,19 +47,19 @@ router.get(
   fdController.adminDashboard
 );
 router.get(
-  '/admin-drinks',
+  '/admin-boots',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminDrinks
+  fdController.adminBoots
 );
 router.get(
-  '/admin-foods',
+  '/admin-sneakers',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminFoods
+  fdController.adminSneakers
 );
 
-//food
+//sneakers
 router.get(
   '/admin-info',
   checkLogin.checkLogin,
@@ -67,70 +67,70 @@ router.get(
   fdController.adminInfo
 );
 router.get(
-  '/admin-add-food',
+  '/admin-add-sneakers',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminAddFood
+  fdController.adminAddSneakers
 );
 router.post(
-  '/admin-add-food',
+  '/admin-add-sneakers',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
   upload.single('image'),
-  fdController.adminAddFoodOnPost
+  fdController.adminAddSneakersOnPost
 );
 router.get(
-  '/admin-update-food/:id',
+  '/admin-update-sneakers/:id',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminUpdateFood
+  fdController.adminUpdateSneakers
 );
 router.post(
-  '/admin-update-food/:id',
+  '/admin-update-sneakers/:id',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
   upload.single('image'),
-  fdController.adminUpdateFoodOnPost
+  fdController.adminUpdateSneakersOnPost
 );
 router.post(
-  '/admin-delete-food/:id',
+  '/admin-delete-sneakers/:id',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminDeleteFoodOnPost
+  fdController.adminDeleteSneakersOnPost
 );
 
-//drink
+//boots
 router.get(
-  '/admin-add-drink',
+  '/admin-add-boots',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminAddDrink
+  fdController.adminAddBoots
 );
 router.post(
-  '/admin-add-drink',
+  '/admin-add-boots',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
   upload.single('image'),
-  fdController.adminAddDrinkOnPost
+  fdController.adminAddBootsOnPost
 );
 router.get(
-  '/admin-update-drink/:id',
+  '/admin-update-boots/:id',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminUpdateDrink
+  fdController.adminUpdateBoots
 );
 router.post(
-  '/admin-update-drink/:id',
+  '/admin-update-boots/:id',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
   upload.single('image'),
-  fdController.adminUpdateDrinkOnPost
+  fdController.adminUpdateBootsOnPost
 );
 router.post(
-  '/admin-delete-drink/:id',
+  '/admin-delete-boots/:id',
   checkLogin.checkLogin,
   checkLogin.checkAdmin,
-  fdController.adminDeleteDrinkOnPost
+  fdController.adminDeleteBootsOnPost
 );
 router.get(
   '/admin-show-staff-list',
@@ -243,16 +243,16 @@ router.get(
   fdController.clientCart
 );
 router.get(
-  '/foods',
+  '/sneakers',
   checkLogin.checkLogin,
   checkLogin.checkClient,
-  fdController.clientFoods
+  fdController.clientSneakers
 );
 router.get(
-  '/drinks',
+  '/boots',
   checkLogin.checkLogin,
   checkLogin.checkClient,
-  fdController.clientDrinks
+  fdController.clientBoots
 );
 router.post(
   '/add-cart/:id',
