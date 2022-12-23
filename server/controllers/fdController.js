@@ -319,6 +319,27 @@ exports.clientProduct = async (req, res) => {
 };
 
 /**
+ * GET /all-product
+ * product view
+ */
+exports.clientAllProduct = async (req, res) => {
+  try {
+    const productID = req.params.id;
+    const query = { };
+    await Product.find(query).then((data) => {
+      res.render('client-all-product', {
+        layout: './layouts/client',
+        title: 'F&D - Clients Info',
+        data,
+      });
+    });
+  } catch (error) {
+    console.log('Error product');
+    res.status(500).send({ message: error.message || 'Error Occured' });
+  }
+};
+
+/**
  * GET /sneakers
  * get client with sneakers
  */

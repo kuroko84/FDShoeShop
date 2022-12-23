@@ -254,6 +254,12 @@ router.get(
   checkLogin.checkClient,
   fdController.clientBoots
 );
+router.get(
+  '/all',
+  checkLogin.checkLogin,
+  checkLogin.checkClient,
+  fdController.clientAllProduct
+);
 router.post(
   '/add-cart/:id',
   checkLogin.checkLogin,
